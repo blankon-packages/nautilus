@@ -21,3 +21,4 @@ interactive_search.patch
 #ubuntu_backspace_behaviour.patch
 #ubuntu_infobars_color.patch
 #ubuntu_tracker_only_on_GNOME.patch
+99_view-small-icon-blankon.patch
