@@ -36,7 +36,6 @@ Build-Depends: debhelper (>= 8),
                libgtk-3-doc,
                libzeitgeist-dev,
                libtracker-sparql-1.0-dev
-
 Homepage: http://www.gnome.org/projects/nautilus/
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/nautilus/
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/nautilus/
