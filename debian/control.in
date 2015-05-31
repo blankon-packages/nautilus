@@ -6,7 +6,6 @@ XSBC-Original-Maintainer: Josselin Mouette <joss@debian.org>
 Uploaders: @GNOME_TEAM@
 Build-Depends: debhelper (>= 8),
                dh-autoreconf,
-               dh-migrations,
                cdbs (>= 0.4.90),
                gnome-pkg-tools (>= 0.19.4ubuntu1),
                libglib2.0-dev (>= 2.43.4),
