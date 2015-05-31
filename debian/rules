@@ -7,14 +7,20 @@ include /usr/share/cdbs/1/class/gnome.mk
 include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
 include /usr/share/gnome-pkg-tools/1/rules/gnome-version.mk
 include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
+include /usr/share/gnome-pkg-tools/1/rules/make-compat-desktop-file.mk
+
+DEB_MK_COMPAT_DESKTOP_nautilus := $(CURDIR)/debian/nautilus/usr/share/applications/org.gnome.Nautilus.desktop $(CURDIR)/debian/nautilus/usr/share/applications/nautilus.desktop
 
 DEB_CONFIGURE_EXTRA_FLAGS += --libexecdir=/usr/lib/nautilus \
                              --disable-update-mimedb \
-                             --disable-packagekit \
                              --enable-introspection \
-                             --enable-tracker
+                             --disable-appindicator \
+                             --enable-tracker=yes
 LDFLAGS += -Wl,-z,defs -Wl,-O1 -Wl,--as-needed
-DEB_DH_MAKESHLIBS_ARGS_libnautilus-extension1a += -V 'libnautilus-extension1a (>= 2.91)'
+DEB_DH_MAKESHLIBS_ARGS_libnautilus-extension1a += -V 'libnautilus-extension1a (>= 1:2.91)'
 DEB_DH_MAKESHLIBS_ARGS_nautilus += -Xusr/lib/nautilus/extensions-3.0/
 
 common-binary-post-install-arch:: list-missing
+
+binary-post-install/nautilus::
+	dh_migrations

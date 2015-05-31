@@ -1,208 +1,1371 @@
-nautilus (3.14.2-1blankon1) tambora; urgency=medium
+nautilus (1:3.16.1-0blankon1) tambora; urgency=medium
 
+  * New upstream release
+  * Import from PPA GNOME3-TEAM
+
+ -- Mahyuddin <yudi.al@gmail.com>  Sun, 31 May 2015 17:06:29 +0700
+
+nautilus (1:3.16.1-0ubuntu1~vivid1) vivid; urgency=medium
+
+  * New upstream release
   * debian/patches:
-    - 99_bring_del_instead_ctrl_del.patch
+    - Disable traditional menu's this will need to be ported to
+      GActions/gtkbuilder
+    - 03_translations_list_update.patch,
+      ubuntu_revert_no_wallpaper.patch,
+      interactive_search.patch
+    - 14_bring_del_instead_ctrl_del.patch: Dropped, seems fixed upstream
+    - 11_copy_skipping_pager.patch,
+      12_unity_launcher_support.patch,15_use-ubuntu-help.patch,
+      zg_activity_logging.patch,
+      19_unity_open_location_xid.patch,
+      16_unity_new_documents.patch,
+      ubuntu_backspace_behaviour.patch: disabled patches need rewrites
+    - Drop git patches included in new release
+  * debian/nautilus-data.install: drop removed file
 
- -- Mijortsa <azis.astrojim@surabaya.di.blankon.in>  Mon, 18 May 2015 14:41:54 +0700
+ -- Tim Lunn <tim@feathertop.org>  Sun, 26 Apr 2015 07:51:19 +1000
 
-nautilus (3.14.2-1) unstable; urgency=medium
+nautilus (1:3.14.2-0ubuntu4) vivid; urgency=medium
 
-  * Drop eject recommends - obsolete since circa 2003
-  * New upstream stable release.
-  * Drop debian/patches/01_fix-new-window-manage-desktop.patch
-    - now part of upstream release.
+  * Fix some more (hopefully all) dialogs using headerbar cases (LP: #1422404)
 
- -- Andreas Henriksson <andreas@fatal.se>  Sun, 17 May 2015 11:15:00 +0200
+ -- Iain Lane <iain.lane@canonical.com>  Mon, 16 Feb 2015 18:06:10 +0000
 
-nautilus (3.14.1-2) unstable; urgency=medium
+nautilus (1:3.14.2-0ubuntu3) vivid; urgency=medium
 
-  * d/p/01_fix-new-window-manage-desktop.patch: Fix opening of new browser
-    windows when nautilus is managing the desktop, cherry-picked from
-    upstream, should really Closes: #766021
+  * 0001-application-use-correct-order-to-watch-for-GSettings.patch: Connect
+    to wallpaper changed signal before reading its value, so that we receive
+    changed signals with recent glib versions which require this ordering.
+    (LP: #1405867)
 
- -- Laurent Bigonville <bigon@debian.org>  Fri, 21 Nov 2014 20:44:25 +0100
+ -- Iain Lane <iain.lane@canonical.com>  Mon, 09 Feb 2015 11:40:40 +0000
 
-nautilus (3.14.1-1) unstable; urgency=medium
+nautilus (1:3.14.2-0ubuntu2) vivid; urgency=medium
 
-  * New upstream release.
-    - includes fix for --new-window (Closes: #766021)
+  * Use new support in gnome-pkg-tools to install a compatibility version of
+    nautilus.desktop, which was renamed upstream.
 
- -- Andreas Henriksson <andreas@fatal.se>  Thu, 20 Nov 2014 14:15:54 +0100
+ -- Iain Lane <iain.lane@canonical.com>  Thu, 18 Dec 2014 16:20:19 +0000
 
-nautilus (3.14.0-1) unstable; urgency=medium
+nautilus (1:3.14.2-0ubuntu1) vivid; urgency=medium
 
-  * New upstream release.
-  * Upload to unstable.
+  [ Tim Lunn ]
+  * New upstream release (LP: #1393252)
+  * debian/watch: watch for stable releases
+  * debian/nautilus-data.install: install appdata.xml
+  * debian/patches:
+    + Refresh some Ubuntu patches
+      - 15_use-ubuntu-help.patch
+      - ubuntu_show_titlebar.patch
+      - restore-traditional-menu-bar.patch
+    + revert_remove_unused_GtkActions.patch: These are used by the menubar
+    + 20_unity_control_center.patch: Dropped, fix differently upstream
+    + no_search_on_desktop.patch, Dropped fix included in new version
 
- -- Andreas Henriksson <andreas@fatal.se>  Tue, 23 Sep 2014 15:50:25 +0200
+  [ Rico Tzschichholz ]
+  * debian/control.in:
+    - Bump build-dep on libgtk-3-dev (>= 3.13.2)
+  * debian/patches:
+    - Refreshed as needed
+    - Drop git patches
+  * debian/nautilus-data.install: placeholder files no longer shipped
 
-nautilus (3.13.91-1) experimental; urgency=medium
+  [ Iain Lane ]
+  * Replace titlebar patches with those submitted upstream (bgo #740617)
+  * Remove 05_desktop_menu_export.patch which was already not applied.
+  * Remove dupe libtracker-sparql BD
+  * New upstream release 3.14.2.
 
-  * New upstream development release.
-  * Update build-dependencies according to configure.ac:
-    - Bump libgtk-3-dev to (>= 3.13.2)
-  * nautilus-data: stop installing /usr/share/nautilus placeholder files
-    - no longer shipped by upstream.
+ -- Iain Lane <iain.lane@canonical.com>  Thu, 18 Dec 2014 11:08:41 +0000
 
- -- Andreas Henriksson <andreas@fatal.se>  Fri, 05 Sep 2014 15:34:02 -0700
+nautilus (1:3.10.1-0ubuntu15) utopic; urgency=medium
 
-nautilus (3.12.2-1) unstable; urgency=medium
+  * debian/patches/git_name_column.patch:
+    - "nautilus-list-view: Avoid unreadable names" (lp: #1243806)
 
-  * New upstream release.
-  * Upload to unstable.
+  [ Lars Uebernickel ]
+  * debian/patches/properties_window_set_max_width_for_value_labels.patch:
+    - avoid very wide properties window (GNOME: #732117)
 
- -- Andreas Henriksson <andreas@fatal.se>  Tue, 15 Jul 2014 00:08:32 +0200
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 20 Oct 2014 09:05:18 -0400
 
-nautilus (3.12.0-2) experimental; urgency=medium
+nautilus (1:3.10.1-0ubuntu14) utopic; urgency=medium
 
-  * Switch to tracker 1.0.
+  * No-change rebuild for gnome-desktop 3.12
 
- -- Michael Biebl <biebl@debian.org>  Sat, 10 May 2014 04:10:11 +0200
+ -- Iain Lane <iain.lane@canonical.com>  Tue, 30 Sep 2014 13:10:47 +0100
 
-nautilus (3.12.0-1) experimental; urgency=medium
+nautilus (1:3.10.1-0ubuntu13.1) utopic; urgency=medium
 
-  * New upstream release.
-  * nautilus: install appdata file
-  * Bump Standards-Version to 3.9.5
+  * debian/patches/ubuntu_titlebar_css.patch:
+    - Remove; the css fixes have been added to the theme
 
- -- Andreas Henriksson <andreas@fatal.se>  Tue, 25 Mar 2014 21:54:35 +0100
+ -- Lars Uebernickel <lars.uebernickel@ubuntu.com>  Mon, 29 Sep 2014 18:46:17 +0200
 
-nautilus (3.11.90-1) experimental; urgency=medium
+nautilus (1:3.10.1-0ubuntu13) utopic; urgency=medium
 
-  * New upstream release.
-  * Bump build-dependency, Gtk+ 3.11.6
+  * debian/control.in: Add build-dep on libtracker-sparql-1.0-dev
+  * debian/rules: enable tracker backend (LP: #1076232)
+  * debian/patches:
+    - ubuntu_tracker_only_on_GNOME.patch: only start the tracker
+      index on GNOME sessions
+    - git_also_tracker-1.0.patch, look for tracker-1.0
 
- -- Andreas Henriksson <andreas@fatal.se>  Tue, 18 Feb 2014 01:56:29 +0100
+ -- Tim Lunn <tim@feathertop.org>  Wed, 13 Aug 2014 23:22:44 +1000
 
-nautilus (3.10.0-1) experimental; urgency=low
+nautilus (1:3.10.1-0ubuntu12) utopic; urgency=medium
+
+  * 0001-Don-t-try-to-open-a-selection-if-we-don-t-have-one.patch: Don't crash
+    when pressing ctrl-alt-o without a selection (on the desktop or in the
+    main window). Thanks to Cristian Calin. (LP: #1318688)
+
+ -- Iain Lane <iain@orangesquash.org.uk>  Mon, 30 Jun 2014 11:45:31 +0100
+
+nautilus (1:3.10.1-0ubuntu11) utopic; urgency=medium
+
+  * debian/patches/git_revert_symlink_logic_change.patch:
+    - revert commit that made symlink targets buggy (lp: #1184720)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 13 May 2014 13:48:17 +0200
+
+nautilus (1:3.10.1-0ubuntu10) utopic; urgency=medium
+
+  * debian/patches/git_crash_network_reconnect.patch:
+    - Fix crash reconnecting to network file servers (LP: #1202159)
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 02 May 2014 10:41:50 +1200
+
+nautilus (1:3.10.1-0ubuntu9) trusty; urgency=medium
+
+  * debian/patches/git_crash_on_required_dirs_dialog.patch
+    - Fix crash when showing "required directories missing" dialog
+      (LP: #1286766)
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 23 Apr 2014 12:44:29 +1200
+
+nautilus (1:3.10.1-0ubuntu8) trusty; urgency=medium
+
+  [ Lars Uebernickel ]
+  * debian/patches/16_unity_new_documents.patch
+    - traditional menubar, restore "New Empty Document" in the file menu
+      (lp: #1290067)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 11 Mar 2014 16:32:39 +0100
+
+nautilus (1:3.10.1-0ubuntu7) trusty; urgency=medium
+
+  * debian/patches/19_unity_open_location_xid.patch:
+    - don't try to call functions on null objects (lp: #1285895)
+    - delay dbus registration until we don't have a bus
+
+ -- Marco Trevisan (Treviño) <mail@3v1n0.net>  Fri, 28 Feb 2014 10:43:25 +0100
+
+nautilus (1:3.10.1-0ubuntu6) trusty; urgency=medium
+
+  * debian/patches/restore-traditional-menu-bar.patch:
+    - Restore a traditional menu under Unity, thanks Lars Uebernickel
+      (lp: #1130722)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 27 Feb 2014 17:04:30 +0100
+
+nautilus (1:3.10.1-0ubuntu5) trusty; urgency=medium
+
+  * Backported upstream bufixes:
+  * debian/patches/git_toolbar_dnd.patch:
+    - "Fix window dragging on the path bar"
+  * debian/patches/git_bookmark_warning.patch:
+    - "bookmark: fix runtime warning"
+  * debian/patches/git_location_icon_rtl.patch:
+    - "Set the arrow icon according to locale's text direction"
+  * debian/patches/git_fix_ellipsize.patch:
+    - "Do not modify ellipsize property within a size request function"
+  * debian/patches/git_reliable_unmount.patch:
+    - "improve unmount detect heuristic"
+  * debian/patches/git_null_uri.patch:
+    - "handle unsupported URI" (lp: #1245019)
+  * debian/patches/git_bookmark_name.patch:
+    - "bookmarks-window: always get the bookmark name from the name field."
+      (lp: #340380)
+  * debian/patches/git_title_update.patch:
+    - "slot: don't forget to update title for non-active slots"
+  * debian/patches/git_extra_spacing.patch:
+    - "slot: don't set spacing on extra location widgets vbox"
+  * debian/patches/git_directory_warning.patch:
+    - "directory: collect all directories when invalidating"
+  * debian/patches/ubuntu_infobars_color.patch: set the infobars type
+    to "other" rather than "question" to avoid blue cluebars (lp: #1259059)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 24 Feb 2014 15:50:08 +0100
+
+nautilus (1:3.10.1-0ubuntu4) trusty; urgency=medium
+
+  * debian/patches/git_valid_location_widget.patch:
+    - should fix some segfaults (lp: #1278481)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 10 Feb 2014 16:53:01 +0100
+
+nautilus (1:3.10.1-0ubuntu3) trusty; urgency=medium
+
+  * debian/patches/ubuntu_backspace_behaviour.patch: restore backspace 
+    behaviour, as a back button, thanks Xavier Claessens (lp: #1108637)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 03 Feb 2014 18:18:01 +0000
+
+nautilus (1:3.10.1-0ubuntu2) trusty; urgency=medium
+
+  * debian/patches/interactive_search.patch:
+    - Fix memory leak
+
+ -- Daniel Wyatt <Daniel.Wyatt@gmail.com>  Tue, 28 Jan 2014 17:33:38 +1300
+
+nautilus (1:3.10.1-0ubuntu1) trusty; urgency=medium
 
   * New upstream release
-  * debian/control.in: Update build-depends libgtk-3-dev (>= 3.9.11),
-    libgnome-desktop-3-dev (>= 3.10)
+  * debian/control.in: bump depend on gtk+ 3.9.11
+  * debian/patches:
+    - Dropped git patches, that are included in new version
+    - 06_never_exec_nonexec_launchers.patch, refreshed
+    - disconnect-extra-location-widgets.patch, dropped included in new version
+    - 16_unity_new_documents.patch, refreshed
+    - ubuntu_show_titlebar.patch, disable CSD titlebar on non-GNOME sessions
+    - ubuntu_titlebar_css.patch, theme fixes (LP: #1272602)
 
- -- Sjoerd Simons <sjoerd@debian.org>  Sun, 03 Nov 2013 11:34:30 +0100
+ -- Tim Lunn <tim@feathertop.org>  Thu, 02 Jan 2014 16:50:06 +1100
 
-nautilus (3.8.2-3) unstable; urgency=medium
+nautilus (1:3.8.2-0ubuntu11) trusty; urgency=medium
 
-  * Switch to tracker 1.0. (Closes: #741425)
+  * debian/patches/interactive_search.patch:
+    - Restore interactive search as an option (lp: #1164016)
 
- -- Michael Biebl <biebl@debian.org>  Sat, 10 May 2014 04:07:37 +0200
+ -- Daniel Wyatt <Daniel.Wyatt@gmail.com>  Wed, 22 Jan 2014 15:10:18 +1300
 
-nautilus (3.8.2-2) unstable; urgency=low
+nautilus (1:3.8.2-0ubuntu10) trusty; urgency=medium
 
-  * Upload to unstable.
+  * debian/patches/git_sidebar_state_on_start.patch:
+    - correctly set the sidebar status on start (lp: #1265401)
 
- -- Emilio Pozuelo Monfort <pochu@debian.org>  Sun, 13 Oct 2013 17:37:31 +0200
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 17 Jan 2014 13:46:26 +0100
 
-nautilus (3.8.2-1) experimental; urgency=low
+nautilus (1:3.8.2-0ubuntu9) trusty; urgency=low
+
+  * debian/patches/no_search_on_desktop.patch: Disable search shortcut
+    on desktop window so a search bar doesn't appear underneath the panel.
+    (LP: #1176981)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 16 Jan 2014 10:22:44 -0500
+
+nautilus (1:3.8.2-0ubuntu8) trusty; urgency=medium
+
+  * debian/patches/20_unity_control_center.patch:
+    - Fix uninitialized variable
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 15 Jan 2014 15:58:05 +1300
+
+nautilus (1:3.8.2-0ubuntu7) trusty; urgency=medium
+
+  * debian/patches/20_unity_control_center.patch:
+    - Fix patch to handle case when u-c-c not installed
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 15 Jan 2014 14:44:47 +1300
+
+nautilus (1:3.8.2-0ubuntu6) trusty; urgency=low
+
+  * debian/patches/20_unity_control_center.patch:
+    - Use Unity control center in Unity (LP: #1257505)
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 15 Jan 2014 14:29:17 +1300
+
+nautilus (1:3.8.2-0ubuntu5) trusty; urgency=medium
+
+  * debian/patches/git_rename_display.patch:
+    - correctly display the rename box even when scrolling (lp: #1266961)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 10 Jan 2014 17:46:06 +0100
+
+nautilus (1:3.8.2-0ubuntu4) trusty; urgency=low
+
+  * debian/patches/git_no_bookmark_on_eject.patch:
+    "This prevents nautilus trying to switch to the place which is being 
+     ejected and in turn showing an error." (lp: #1000325)
+  * debian/patches/git_correct_context_menu.patch:
+    - show the correct menu of the cursor is not moved after selection
+      (lp: #1241736)
+  * debian/patches/git_invalid_symlink_handling.patch:
+    - don't error out on invalid symlinks
+  * debian/patches/git_rtl_icons.patch:
+    "toolbar: Set button arrow icons according to locale's text direction",
+    that makes the previous/next icons point in the right direction
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 02 Dec 2013 11:41:03 +0100
+
+nautilus (1:3.8.2-0ubuntu3) trusty; urgency=low
+
+  * debian/patches/git_rename_background.patch: 
+    - render editable label's background, that should resolve the constrast
+      issues when renaming files on the desktop with some colors
+      (lp: #1236601)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 18 Nov 2013 13:52:25 +0100
+
+nautilus (1:3.8.2-0ubuntu2) saucy; urgency=low
+
+  * debian/patches/git_list_handlers.patch: nautilus was made, during 
+    the 3.8 cycle, to ignore the mimetype handlers with NoDisplay=true. 
+    The change turned out to be wrong and got reverted in 3.10, doing the
+    same here. It makes, e.g shotwell to be listed again (lp: #1238149)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 11 Oct 2013 15:20:43 +0200
+
+nautilus (1:3.8.2-0ubuntu1) saucy; urgency=low
+
+  [ Sebastien Bacher ]
+  * Bring the 3.8 update work from the gnome3 ppa to the distribution vcs
+  * debian/patches/16_unity_new_documents.patch: 
+    - updated to work on 3.8 (by adding a revert of the commit that broke it)
+  * debian/patches/ubuntu_revert_no_wallpaper.patch:
+    - revert upstream changes to use a rgba desktop view, until the other
+      components are ready for that change, see lp #1159430 for details
+  * debian/patches/ubuntu_sync_background_to_accountsservice.patch:
+    - restore that dropped patch since we keep display the wallpaper there
+
+  [ Iain Lane ]
+  * debian/patches/disconnect-extra-location-widgets.patch:
+    - updated for the new nautilus codebase
 
   [ Jeremy Bicha ]
-  * New upstream release
-  * debian/control.in: Bump minimum gsettings-desktop-schemas
-
-  [ Emilio Pozuelo Monfort ]
-  * Standards-Version is 3.9.4, no changes needed.
-
-  [ Michael Biebl ]
-  * Re-enable tracker support.
-  * Set pkg-gnome-maintainers@lists.alioth.debian.org as Maintainer.
-
- -- Michael Biebl <biebl@debian.org>  Sat, 12 Oct 2013 00:54:36 +0200
-
-nautilus (3.8.0-1) experimental; urgency=low
-
-  * New upstream release.
-
- -- Emilio Pozuelo Monfort <pochu@debian.org>  Mon, 25 Mar 2013 18:20:45 +0100
-
-nautilus (3.7.92-1) experimental; urgency=low
-
-  * New upstream release.
-
- -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 20 Mar 2013 01:37:52 +0100
-
-nautilus (3.7.91-2) experimental; urgency=low
-
-  * debian/control.in:
-    - Bump depends on gsettings-desktop-schemas to 3.7.90.
-      Thanks to Laurent Bigonville for noticing this. Closes: #703106.
-
- -- Emilio Pozuelo Monfort <pochu@debian.org>  Fri, 15 Mar 2013 20:36:10 +0100
-
-nautilus (3.7.91-1) experimental; urgency=low
-
-  [ Josselin Mouette ]
-  * Recommend gnome-icon-theme-symbolic. Closes: #692509
-
-  [ Jeremy Bicha ]
-  * New upstream release
-  * debian/control.in:
-    - Bump minimum glib and gtk
-    - Suggest brasero instead of recommending it 
+  * New upstream release (LP: #1130746)
+    - Share the show-hidden-files setting with the GTK file chooser
+      (LP: #1039014)
+    - Limit folder size and content count to a single filesystem (LP: #585472)
   * debian/nautilus.install:
     - Shell search provider doesn't need a separate library any more
+  * Drop git patches
+  * Refreshed patches
+  
+  [ Robert Ancell ]
+  * debian/control:
+    - Bump build-depends on libglib2.0-dev
 
-  [ Emilio Pozuelo Monfort ]
-  * New upstream release.
-    + debian/control.in,
-      debian/rules:
-      - Temporarily disable tracker support until tracker 0.16 lands
-        in the archive.
+  [ Rico Tzschichholz ]
+  * New upstream release
+  * debian/control:
+    - Bump build-depends on libgtk-3-dev (>= 3.7.7)
+  * debian/patches:
+    - 09_no-initial-fade.patch:
+    - 10_sync_background_to_accountsservice.patch:
+      + Dropped, Nautilus doesn't draw the background itself any more
+  * Refreshed patches
 
- -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 13 Mar 2013 13:26:53 +0100
+  [ Tim Lunn ]
+  * Add build-dep on gsettings-desktop-schemas
 
-nautilus (3.6.1-2) experimental; urgency=low
+  [ Marco Trevisan (Treviño) ]
+  * debian/patches:
+    - 19_unity_open_location_xid.patch: updated to apply properly
 
-  * Build-depend on libgnome-desktop-3-dev 3.6.1, because thumbnailing
-    doesn't seem to work when compiled against the 3.4.x version
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 21 Jun 2013 17:10:06 +0200
 
- -- Simon McVittie <smcv@debian.org>  Wed, 24 Oct 2012 12:18:01 +0100
+nautilus (1:3.6.3-0ubuntu20) saucy; urgency=low
 
-nautilus (3.6.1-1) experimental; urgency=low
+  * Remove previous patch; it wasn't the optimal approach. Add
+    debian/patches/disconnect-extra-location-widgets.patch to remove
+    references to NautilusTrashBar, causing it to be disposed at the right
+    time instead. 
 
-  * Team upload
+ -- Iain Lane <iain.lane@canonical.com>  Thu, 20 Jun 2013 09:38:18 +0100
+
+nautilus (1:3.6.3-0ubuntu19) saucy; urgency=low
+
+  [ Iain Lane ]
+  * Really fix the crash when after using trash. Take a weak reference to the
+    NautilusView to disconnect signal handlers at a more appropriate time.
+    (LP: #1182307) 
+
+  [ Sebastien Bacher ]
+  * debian/patches/git_rubberbands_color.patch:
+    - use background color for the desktop rubberband, thanks Ted Gould
+      (lp: #1061215)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 19 Jun 2013 19:52:13 +0200
+
+nautilus (1:3.6.3-0ubuntu18) saucy; urgency=low
+
+  * debian/patches/0001-trash-bar-fix-double-disconnect-handler.patch:
+    Backport upstream commit fixing use after free (double disconnect). (LP:
+    #1182307)
+
+ -- Iain Lane <iain.lane@canonical.com>  Mon, 10 Jun 2013 18:04:35 +0100
+
+nautilus (1:3.6.3-0ubuntu17) saucy; urgency=low
+
+  * Rebuild for gnome-desktop 3.8 transition (LP: #1184812)
+    - debian/patches/git_eel_needs_terminal.patch 
+
+ -- Tim Lunn <tim@feathertop.org>  Tue, 28 May 2013 10:59:40 +1000
+
+nautilus (1:3.6.3-0ubuntu16) raring; urgency=low
+
+  * debian/patches/git_rank_exact_matches_higher.patch,
+    debian/patches/git_rank_reversed.patch,
+    debian/patches/git_search_dont_follow_symlinks.patch:
+    - backport some upstream search improvements (don't follow symlinks,
+      rank exact matches better than submatches, use correct order)
+  * debian/patches/git_reset_view_to_defaults.patch:
+    - correctly reset view settings when using the option (lp: #794538)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 16 Apr 2013 12:17:18 +0200
+
+nautilus (1:3.6.3-0ubuntu15) raring; urgency=low
+
+  * No change rebuild to get translations imported in launchpad. 
+    Nautilus was set to get them from the trunk vcs, but that's buggy since 
+    we are not following the current GNOME serie at the moment and strings
+    changed in 3.8. Launchpad was updated so we just need a source upload.
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 11 Apr 2013 12:34:40 +0200
+
+nautilus (1:3.6.3-0ubuntu14) raring; urgency=low
+
+  * debian/patches/git_enable_copy_from_recent.patch:
+    - Allow copying from Recent
+  * debian/patches/git_restore_from_missing_directories.patch:
+    - Allow restoring deleted files when the containing directories
+      no longer exist (LP: #1152706)
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Thu, 04 Apr 2013 19:48:10 -0400
+
+nautilus (1:3.6.3-0ubuntu13) raring; urgency=low
+
+  * debian/patches/19_unity_open_location_xid.patch:
+    - extra fixes added to the recent work, should allow a better unity
+      launcher integration for the special locations.
+      Thanks Marco Trevisan (Treviño)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 27 Mar 2013 19:56:51 +0100
+
+nautilus (1:3.6.3-0ubuntu12) raring; urgency=low
+
+  * debian/patches/git_enable_simple_search_engine.patch,
+    debian/patches/git_search_dir_incremental_load.patch,
+    debian/patches/git_search_recursive_dir.patch:
+    - backport some patches to fix recursive directory search (lp: #1077415)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 22 Mar 2013 18:45:04 +0100
+
+nautilus (1:3.6.3-0ubuntu11) raring; urgency=low
+
+  * debian/patches/10_sync_background_to_accountsservice.patch:
+    - write the background image to accountsservice when it changes,
+      gnome-settings-daemon was doing that but we stopped using that plugin 
+      to avoid duplication so we need to do it here (lp: #1128492)     
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 21 Mar 2013 12:53:17 +0100
+
+nautilus (1:3.6.3-0ubuntu10) raring; urgency=low
+
+  * debian/patches/git_margin_primary_workarea_revert.patch:
+    - revert a buggy fix that broke dnd between screens (lp: #1090720)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 20 Mar 2013 18:59:09 +0100
+
+nautilus (1:3.6.3-0ubuntu9) raring; urgency=low
+
+  * Renamed patches coming from the upstream vcs to be prefixed with git_
+  * debian/nautilus-home.desktop:
+    - use --new-window in that desktop as well
+
+  [ Marco Trevisan (Treviño) ]
+  * debian/patches/10_reuse_already_opened_views.patch
+    - Try to reuse the available windows or tabs when opening an already opened
+      location (lp: #692444)
+  * debian/patches/12_unity_launcher_support.patch:
+    - Quicklist entries to show the copy dialog should use a separator (lp: #1154109)
+    - Transfer dialog should be presented using the correct timestamp (lp: #1154111)
+    - Use the quicklist activation timestamp to set the application user time
+      so that the opened windows will be focused (lp: #1154237)
+  * debian/patches/17_static_unity_quicklist.patch:
+    - Use nautilus --new-window to open a New window
+  * debian/patches/19_add_desktop_keywords.patch:
+    - Adding .desktop files keywords from upstream
+  * debian/patches/20_export_opened_locations_on_dbus.patch:
+    - Export the opened locations to dbus (lp: #1063830)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 14 Mar 2013 11:23:18 +0100
+
+nautilus (1:3.6.3-0ubuntu8) raring; urgency=low
+
+  * debian/control.in:
+    - Build-Depends on dh-migrations
+  * debian/nautilus.migrations, debian/nautilus-unity-launcher-icon.py:
+    - script to migration the nautilus' unity launcher entry
+  * debian/rules:
+    - use dh_migrations
+  * debian/nautilus-home.desktop, debian/nautilus-home.desktop.in:
+    - use NoDisplay=true as a first step to deprecation, we need to keep 
+      the entry until the next LTS for migration reasons
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 08 Mar 2013 16:56:05 +0100
+
+nautilus (1:3.6.3-0ubuntu7) raring; urgency=low
+
+  * debian/patches/18_unity_icon_color.patch:
+    - specify a background color for the unity launcher icon (lp: #1081691)
 
   [ Jeremy Bicha ]
-  * New upsteam release
+  * debian/patches/git_show_acclerators.patch:
+    - Show keyboard accelerators in the toolbar menus
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 08 Mar 2013 12:40:25 +0100
+
+nautilus (1:3.6.3-0ubuntu6) raring; urgency=low
+
+  * debian/patches/16_unity_new_documents.patch: display the "new document" 
+    menu under unity, even if there is no template installed (lp: #1113648)
+  * debian/patches/git_fix_touch_double_click.patch: upstream patch to try 
+    to fix double click not working on touch screens (lp: #1071922)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 06 Mar 2013 18:49:59 +0100
+
+nautilus (1:3.6.3-0ubuntu5) raring; urgency=low
+
+  * debian/patches/git_single_filesystem_count.patch:
+    - Limit filesystem content and size count to a single filesystem.
+      Thanks Phillip Susi for the patch! (LP: #585472)
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 14 Jan 2013 22:22:01 -0500
+
+nautilus (1:3.6.3-0ubuntu4) raring; urgency=low
+
+  * debian/patches/13_unity_background.patch:
+    - drop, we are going to patch the control-center to do the name 
+      translation rather than trying to modify every single client code
+      which opens the background settings (lp: #1093436)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 10 Jan 2013 16:01:49 +0100
+
+nautilus (1:3.6.3-0ubuntu3) raring; urgency=low
+
+  * debian/patches/git_restore_filename.patch: use the correct filename when 
+    restoring files, thanks Timothy Arceri (lp: #974208)
+  * debian/patches/git_launcher_no_frame.patch: "don't add a thumbnail 
+    border around desktop file launchers" (lp: #1085320)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 03 Dec 2012 16:17:24 +0100
+
+nautilus (1:3.6.3-0ubuntu2) raring; urgency=low
+
+  * debian/patches/13_unity_background.patch:
+    - Point to the correct System Settings panel when running Unity
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Thu, 22 Nov 2012 09:38:32 -0500
+
+nautilus (1:3.6.3-0ubuntu1) raring; urgency=low
+
+  * New upstream release
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Tue, 13 Nov 2012 14:24:47 +1300
+
+nautilus (1:3.6.2-0ubuntu2) raring; urgency=low
+
+  * debian/patches/15_use-ubuntu-help.patch:
+    - Updated to not point to Ubuntu help when running GNOME (LP: #852911)
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 02 Nov 2012 22:27:11 -0400
+
+nautilus (1:3.6.2-0ubuntu1) raring; urgency=low
+
+  * New upstream release.
+  * debian/mount-archive.desktop: Fix minor Lintian warning
+  * debian/patches/12_unity_launcher_support.patch: Refreshed
+  * debian/patches/git_add_missing_tooltips.patch:
+    - Backport patch from 3.7 to add tooltips to the new menubuttons
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 31 Oct 2012 03:02:22 -0400
+
+nautilus (1:3.6.1-0ubuntu1) raring; urgency=low
+
+  [ Jeremy Bicha ]
+  * New upstream release (LP: #1057780).
+  * Dropped git patches
   * debian/control.in:
-    - Bump minimum glib and gtk
-  * debian/nautilus.install, debian/nautilus-data.install:
-    - Install gnome shell search provider
-  * Dropped obsolete patches:
-    - debian/patches/12_list-view_expand.patch
-    - debian/patches/13_tracker.patch:
+    - Bump minimum GTK & GLib
+  * debian/nautilus.install, nautilus-data.install:
+    - Install GNOME Shell search provider
+    - Drop obsolete hicolor icons
+  * debian/patches/05_desktop_menu_export.patch:
+    - commented, it needs to be mostly rewriten for the new design
+      or implemented in a different place or way
+  * Refreshed patches:
+    - 03_translations_list_update.patch
+    - 12_unity_launcher_support.patch
+    - 14_bring_del_instead_ctrl_del.patch
+    - 15_use-ubuntu-help.patch
 
- -- Simon McVittie <smcv@debian.org>  Tue, 23 Oct 2012 10:35:43 +0100
+  [ Dmitry Shachnev ]
+  * Drop 21_correct_timestamp_use_fix_focus_issue.patch, it's not needed
+    with the new version and is causing segmentation faults.
 
-nautilus (3.4.2-1) unstable; urgency=low
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Sun, 28 Oct 2012 20:07:08 -0400
+
+nautilus (1:3.5.90.really.3.4.2-0ubuntu4) quantal; urgency=low
+
+  * debian/patches/git_a11y_prototype.patch,
+    debian/patches/git_icons_a11y.patch:
+    - revert those commits added in the previous reverision, 
+      the spoke indexes are wrong (lp: #1061550)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 05 Oct 2012 18:57:29 +0200
+
+nautilus (1:3.5.90.really.3.4.2-0ubuntu3) quantal; urgency=low
+
+  * Backported some upstream a11y fixes (lp: #1035273)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 02 Oct 2012 20:34:29 +0200
+
+nautilus (1:3.5.90.really.3.4.2-0ubuntu2) quantal; urgency=low
+
+  * debian/nautilus.gsettings-override:
+    - Dropped, override moved to ubuntu-default-settings
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 11 Sep 2012 23:38:28 -0400
+
+nautilus (1:3.5.90.really.3.4.2-0ubuntu1) quantal-proposed; urgency=low
+
+  * Revert to 3.4 for quantal.  We'll go back in R once we have time to
+    deal with upstream changes.
+  * debian/control:
+    - Reduce Build-Depends on gtk back to 3.4 requirement
+  * debian/nautilus.gsettings-override:
+    - Add back computer-icon-visible key
+  * debian/patches/git_bookmark_place_dnd.patch,
+    debian/patches/git_dont_grab_entry_focus.patch,
+    debian/patches/git_image_properties_wrapping.patch,
+    debian/patches/git-0001-Workaround-focus-issues-on-typeahead.patch:
+    - Revive patches that are no longer upstream
+  * debian/patches/03_translations_list_update.patch,
+    debian/patches/04_suppress_umount_in_ltsp.patch,
+    debian/patches/08_clean_session_capplet.patch,
+    debian/patches/09_no-initial-fade.patch,
+    debian/patches/11_copy_skipping_pager.patch,
+    debian/patches/14_bring_del_instead_ctrl_del.patch,
+    debian/patches/15_use-ubuntu-help.patch,
+    debian/patches/20_static_unity_quicklist.patch,
+    debian/patches/21_correct_timestamp_use_fix_focus_issue.patch,
+    debian/patches/dont_wrap_labels_after_dots.patch,
+    debian/patches/zg_activity_logging.patch:
+    - Refresh
+  * debian/patches/05_desktop_menu_export.patch:
+    - Restore from 3.4 packaging
+    - Re-enable
+    - Drop reference to LaunchpadIntegration menu items
+
+ -- Michael Terry <mterry@ubuntu.com>  Thu, 23 Aug 2012 09:20:51 -0400
+
+nautilus (1:3.5.90-0ubuntu1) quantal; urgency=low
 
   * New upstream release.
-  * Refresh debian/patches/12_list-view_expand.patch.
+    - Reorganize application and gear menu, and add a menu for view actions
+    - Add a View options selector to the toolbar
+    - Add cluebars for Templates and Scripts special directories
+    - Add ability to reorder bookmarks
+    - Improve strings in the Autorun prompt
+    - Improve error message strings
+    - Improve the image Properties page
+    - Improve the Permissions page in the Properties window
+    - Improve the layout of the Bookmarks dialog
+    - Use the dropped text paragraph as name when creating new files
+      using DnD of text snippets
+    - Use double quotes instead of ASCII quotes for filenames
+    - Change default action for executable text files to Display
+    - Change the view mode and zoom level to be per-window instead of
+      per-folder
+    - Remove support for Manual layouting in icon views outside of Desktop
+    - Remove the Octal permissions list view column
+    - Fix segfault when no search results are found
+    - Change owner pronoun from "me" to "Me" (LP: #1027216)
+  * Removed upstream patches:
+    - git_no_empty_search_segfault.patch
+    - git_fix_missing_desktop_menu.patch
+  * debian/patches/15_use-ubuntu-help.patch: Refreshed
 
- -- Michael Biebl <biebl@debian.org>  Wed, 16 May 2012 15:54:52 +0200
+  [ Rico Tzschichholz ]
+  * Refreshed patches:
+    - 03_translations_list_update.patch
+    - 12_unity_launcher_support.patch
+    - 21_correct_timestamp_use_fix_focus_issue.patch
 
-nautilus (3.4.1-1) unstable; urgency=low
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 20 Aug 2012 23:59:52 -0400
 
+nautilus (1:3.5.5-0ubuntu3) quantal; urgency=low
+
+  * git_fix_missing_desktop_menu.patch:
+    Restore accidently dropped right-click menu for desktop mode.
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 10 Aug 2012 09:21:29 -0400
+
+nautilus (1:3.5.5-0ubuntu2) quantal; urgency=low
+
+  * debian/patches/git_no_empty_search_segfault.patch:
+    - don't segfault when a search returns no result (lp: #1034548)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 09 Aug 2012 13:47:01 +0200
+
+nautilus (1:3.5.5-0ubuntu1) quantal; urgency=low
+
+  * New upstream version
+  * Dropped the previous git backport, the fixes are in the new version
+  * debian/patches/06_never_exec_nonexec_launchers.patch:
+    - refreshed, dropped the timestamp checks it was transitional 
+      behaviour for upgraders and not needed anymore and the ctime info
+      got dropped from NautilusFiles upstream judged unreliable
+  * debian/rules:
+    - disable tracker use, we don't want to depends on it
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 08 Aug 2012 10:29:39 +0200
+
+nautilus (1:3.5.4-0ubuntu3) quantal; urgency=low
+
+  * debian/patches/git_guard_for_no_supported_vfs_schemas.patch:
+    - "places-sidebar: guard for NULL supported VFS schemes array". Resolves
+       segfault on launch. (LP: #1032303)
+
+ -- Iain Lane <iain.lane@canonical.com>  Mon, 06 Aug 2012 13:02:57 +0100
+
+nautilus (1:3.5.4-0ubuntu2) quantal-proposed; urgency=low
+
+  * debian/patches/git_handle_space.patch:
+    - "query-editor: make sure not to handle space if we're invisible"
+  * debian/patches/git_dont_grab_entry_focus.patch:
+    - "Don't grab focus away from the search entry box"
+  * debian/patches/git_entry_grab_keys.patch:
+    - "This fixes the search entry grabbing pasted URLs." (lp: #1026659)
+  * debian/patches/git_focus_on_down_key.patch:
+    - "Change focus to the view on down arrow"
+  * debian/patches/git_desktop_dont_search_on_type.patch:
+    - "Don't handle search for desktop windows" (lp: #1028028)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 24 Jul 2012 13:00:13 +0200
+
+nautilus (1:3.5.4-0ubuntu1) quantal; urgency=low
+
+  * New upstream version:
+    * Add Copy To and Move To actions
+    * Add a notification while ejecting volumes
+    * List view:
+      - New date format display
+      - Use a list model instead of a tree model for list view
+      - Use a better default column order
+      - Change some list column names
+      - Use 32px icons by default
+      - Tweak padding
+    * Search:
+      - "Just type" search
+      - Combine the search bar and the query editor
+      - Tracker engine performance improvements and fixes
+    * Sidebar:
+      - Add a recent files place
+      - Use symbolic icons
+      - Improve order of the items
+    * Toolbar:
+      - Change toolbar layout to the GNOME 3 style
+      - Don't show titlebar when maximized
+      - Use a linked style for the pathbar
+    * Menus:
+      - Migrate the menubar to a gear menu
+      - Remove "Go" menu
+      - Remove "Bookmarks" menu
+    * Remove "Text beside icons" option for icon view
+    * Fix loading string not disappearing in image properties on load
+  * debian/patches/00git_hide_toolbar_on_desktop.patch:
+    - dropped, the patch is in the new version
+  * Re-enabled patches that were commented in the previous commit
+    without reason, they seem to work fine
+  * debian/patches/git-0001-Workaround-focus-issues-on-typeahead.patch:
+    - dropped, the new version integrate typeahead with the search and has
+      no floating widget used which deprecates this patch
+  * debian/patches/workaround_ellipsizing_bug.patch:
+    - dropped, the bug got properly fixed in the new version
+  * debian/patches/05_desktop_menu_export.patch:
+    - commented, it needs to be mostly rewriten for the new design
+      or implemented in a different place or way
+
+  [ Edward Donovan ]
+  * debian/source_nautilus.py: Fix for Python 3. (LP: #1013171)
+
+  [ Jeremy Bicha ]
   * New upstream release.
-  * Drop explicit Build-Depends on gir packages and let the corresponding -dev
-    package pull them for us.
-  * Bump minimum required version of libglib2.0-dev to 2.31.9 and libgtk-3-dev
-    to 3.3.17.
-  * Remove debian/patches/14_tracker-0.14.patch, fixed upstream.
-  * Remove debian/patches/03_deprecated.patch, no longer needed.
-  * debian/nautilus-data.install: Remove usr/share/pixmaps, not installed by
-    upstream.
-  * debian/rules: Remove call to dh_installmime, already done by cdbs.
-  * Bump Standards-Version to 3.9.3.
+  * debian/patches/05_desktop_menu_export.patch: Refreshed
+  * debian/patches/21_correct_timestamp_use_fix_focus_issue.patch: Refreshed
 
- -- Michael Biebl <biebl@debian.org>  Thu, 19 Apr 2012 14:41:06 +0200
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 18 Jul 2012 15:13:46 +0200
 
-nautilus (3.2.1-3) unstable; urgency=low
+nautilus (1:3.5.3-0ubuntu1) quantal-proposed; urgency=low
 
-  * Change section of gir1.2-nautilus-3.0 to introspection.
-  * Build against tracker 0.14.
+  * New upstream release (LP: #1017740)
+  * debian/control:
+    - Bump build-depends on libgtk-3-dev
+  * debian/patches/git_bookmark_place_dnd.patch:
+  * debian/patches/git_icon_no_thumbnail_fix.patch:
+  * debian/patches/git_no_assert_on_double_mount.patch:
+  * debian/patches/git_no_menubars_segfault.patch:
+    - Applied upstream
 
- -- Michael Biebl <biebl@debian.org>  Wed, 14 Mar 2012 19:09:16 +0100
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 28 Jun 2012 13:45:20 +1200
+
+nautilus (1:3.5.2-0ubuntu3) quantal; urgency=low
+
+  * debian/nautilus.gsettings-override:
+    - dropped deprecated computer-icon-visible key
+  * debian/patches/git_icon_no_thumbnail_fix.patch:
+    - "icon-view: fix thumbnails not showing regression" (lp: #1014755)
+  * debian/patches/05_desktop_menu_export.patch:
+    - synced on the new upstream version, those options got dropped:
+      hide toolbar, statusbar, extra panes, tree panel, computer location.
+  * debian/patches/03_translations_list_update.patch,
+    debian/patches/13_translate_unity_launcher.patch:
+    - merged, one patch to updates the potfiles is enough
+  * debian/patches/21_correct_timestamp_use_fix_focus_issue.patch:
+    - "Use the correct timestamp when creating a new nautilus window.", 
+       that should fix nautilus dialog opening unfocussed, 
+       thanks Andrea Azzarone (lp: #781931)
+  * debian/patches/workaround_ellipsizing_bug.patch:
+    - workaround ellipsizing issues in the pathbars (lp: #1014645)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 19 Jun 2012 18:57:52 +0200
+
+nautilus (1:3.5.2-0ubuntu2) quantal; urgency=low
+
+  * debian/patches/00git_hide_toolbar_on_desktop.patch:
+    - Hide toolbar when running as desktop background
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 18 Jun 2012 12:00:30 +1200
+
+nautilus (1:3.5.2-0ubuntu1) quantal; urgency=low
+
+  * New upstream release (LP: #1008956)
+  * debian/control:
+    - Bump build-depends on libgtk-3-dev
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 15 Jun 2012 12:41:17 +1200
+
+nautilus (1:3.5.1-0ubuntu6) quantal; urgency=low
+
+  * debian/patches/git_no_assert_on_double_mount.patch: lp: #1007593
+    "sidebar: don't forget to NULL slot pointer after volume is mounted"
+  * debian/patches/git_bookmark_place_dnd.patch: lp: #874386, #920691
+    "places-sidebar: allow dropping of files to bookmarks"
+  * debian/patches/git_no_menubars_segfault.patch: lp: #1003771
+    "window-menus: disconnect from GtkSettings notifications on finalize"
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 12 Jun 2012 21:28:08 +0200
+
+nautilus (1:3.5.1-0ubuntu5) quantal; urgency=low
+
+  * Rebuild for the libgnome-desktop SOVER bump.
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Thu, 07 Jun 2012 15:59:26 -0600
+
+nautilus (1:3.5.1-0ubuntu4) quantal; urgency=low
+
+  * debian/patches/12_unity_launcher_support.patch:
+    - return a gboolean
+
+ -- Didier Roche <didrocks@ubuntu.com>  Fri, 01 Jun 2012 08:09:53 +0200
+
+nautilus (1:3.5.1-0ubuntu3) quantal; urgency=low
+
+  * debian/patches/12_unity_launcher_support.patch:
+    - Fix dbus launcherentry.updates dbus signal sent regurlarly after
+      a copy (LP: #1003286)
+
+ -- Didier Roche <didrocks@ubuntu.com>  Thu, 31 May 2012 17:31:35 +0200
+
+nautilus (1:3.5.1-0ubuntu2) quantal; urgency=low
+
+  * debian/patches/12_unity_launcher_support.patch:
+    - Fix folders with underscore in name shown incorrectly in Home Launcher
+      quicklist (LP: #961170)
+
+ -- Didier Roche <didrocks@ubuntu.com>  Tue, 22 May 2012 12:21:45 +0200
+
+nautilus (1:3.5.1-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Tue, 15 May 2012 11:50:05 +1200
+
+nautilus (1:3.4.1-0ubuntu2) quantal; urgency=low
+
+  * debian/control:
+    - Use standards version 3.9.3
+    - Drop dependency on liblaunchpad-integration-3.0-dev
+  * debian/patches/01_lpi.patch:
+    - Dropped, we no longer do Launchpad integration
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 14 May 2012 16:41:56 +1200
+
+nautilus (1:3.4.1-0ubuntu1) precise-proposed; urgency=low
+
+  * New upstream version:
+    - Don't display comment field for desktop files
+    - Fix off-by-one error in file operation counts
+    - Fix mouse hardware back/forward buttons not working correctly
+      (lp: #486358)
+    - Fix "Undo Trash" for files with non-ASCII characters
+    - Fix name corruption for untitled files under some circumstances
+  * debian/patches/revert_desktop_comment.patch,
+    debian/patches/git_utf_undo.patch,
+    debian/patches/git_no_freespace_cpu_look.patch,
+    debian/patches/git_copy_off_by_one.patch:
+    - dropped, those fixes are in the new version
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 16 Apr 2012 18:45:41 +0200
+
+nautilus (1:3.4.0-0ubuntu3) precise; urgency=low
+
+  * debian/patches/dont_wrap_labels_after_dots.patch:
+    - don't wrap labels after a dot if they are followed by a number,
+      the upstream code has a hack for 3 digit version numbers which 
+      doesn't really make sense (lp: #942539)
+  * debian/patches/git_utf_undo.patch:
+    - git patch, fix undo failing to restore files with non ascii chars
+      (lp: #973620)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Sun, 15 Apr 2012 11:46:05 +0200
+
+nautilus (1:3.4.0-0ubuntu2) precise; urgency=low
+
+  * debian/patches/git_copy_off_by_one.patch:
+    - "Off-by-one error in count of copied files" (lp: #930944)
+  * debian/patches/git_no_freespace_cpu_look.patch:
+    - correct free space calculation and avoid cpu loops (lp: #965493)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 05 Apr 2012 17:26:23 +0200
+
+nautilus (1:3.4.0-0ubuntu1) precise-proposed; urgency=low
+
+  * New upstream version
+    - Fix a regression where "Open With" was hidden for folders (lp: #964186)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 26 Mar 2012 19:53:09 +0200
+
+nautilus (1:3.3.92-0ubuntu2) precise; urgency=low
+
+  * debian/patches/revert_desktop_comment.patch:
+    - revert git commit to change the .desktop handling code which leaded 
+      to have the filename displayed with the comment field next to it 
+      (lp: #961141)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 22 Mar 2012 19:34:17 +0100
+
+nautilus (1:3.3.92-0ubuntu1) precise; urgency=low
+
+  * New upstream version:
+    - Fix scrolling in compact view to work with latest GTK
+    - Fix Ctrl+Scroll zooming to work with latest GTK
+    - Don't hide Open With applications for subtypes 
+      of application/x-desktop (lp: #38434)
+    - Add support for the "network" GVolume class identifier
+    - Fix a crash at exit with certain extensions that keep refs of 
+      the NautilusFileInfos (lp: #449796)
+    - Fix initial focus row when moving the focus into the Places 
+      sidebar (lp: #940951)
+    - Fix Shift+Click selection when going back/forward in browsing 
+      history (lp: #953245)
+    - Fix packing of desktop file box in properties view
+    - Fix pathbar button sizing when a file watched by the pathbar 
+      changes name (lp: #952648)
+    - Fix properties window not being able to shrink size (lp: #948524)
+    - Remove unused --enable-profiler configure option
+    - Let drag the dialog by the toolbar (lp: #953004)
+  * debian/patches/git_handle_ctrl_scroll.patch:
+    - dropped, the fix is in the new version
+  * debian/patches/12_unity_launcher_support.patch:
+    - use correct capitalization, list the source in potfiles so it's
+      translatable (lp: #958517)
+  * drop appindicator patch, the option was turned off and it creates work
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 20 Mar 2012 11:19:52 +0100
+
+nautilus (1:3.3.91-0ubuntu4) precise; urgency=low
+
+  * debian/patches/git_handle_ctrl_scroll.patch:
+    - don't run into an assert on ctrl-scroll (lp: #949591)
+  * debian/patches/zg_activity_logging.patch:
+    - updated version from Siegfried Gevatter, should fix lp: #947489
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 08 Mar 2012 19:29:58 +0100
+
+nautilus (1:3.3.91-0ubuntu3) precise; urgency=low
+
+  * Update nautilus-home.desktop for freedesktop action spec too
+    Thanks Doug McMahon for reporting this!
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 07 Mar 2012 20:45:33 -0500
+
+nautilus (1:3.3.91-0ubuntu2) precise; urgency=low
+
+  * debian/patches/20_static_unity_quicklist.patch:
+    - Use title case and update for new freedesktop desktop action spec
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 06 Mar 2012 16:36:07 -0500
+
+nautilus (1:3.3.91-0ubuntu1) precise; urgency=low
+
+  * New upstream version:
+    - Ensure pathbar scrolling works with latest GTK
+    - Fix a crash when unmounting volumes with non-empty trash
+    - Fix a race condition leading to a crash when closing window slots
+      under certain circumstances
+  * debian/control.in:
+    - updated gtk requirements
+  * debian/patches/21_fix_crash_during_unmount.patch:
+    - dropping, the fix is in the new version
+  * debian/patches/22_fix_crash_from_extra_slot_ref.patch:
+    - dropping, the fix is in the new version
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 06 Mar 2012 21:34:52 +0100
+
+nautilus (1:3.3.90-0ubuntu6) precise; urgency=low
+
+  * Fix LP: #944624 - Don't stick a pointer to an int, as it causes stack
+    corruption on 64-bit architectures
+    - update debian/patches/zg_activity_logging.patch
+  * Turn on the zeitgeist logging patch again
+    - update debian/patches/series
+
+ -- Chris Coulson <chris.coulson@canonical.com>  Sat, 03 Mar 2012 23:53:38 +0000
+
+nautilus (1:3.3.90-0ubuntu5) precise; urgency=low
+
+  * Disable the zeitgeist logging patch until we figure out why it causes
+    nautilus to crash (LP: #944624)
+    - update debian/patches/series
+
+ -- Chris Coulson <chris.coulson@canonical.com>  Sat, 03 Mar 2012 20:09:45 +0000
+
+nautilus (1:3.3.90-0ubuntu4) precise; urgency=low
+
+  * debian/control.in:
+    - Build-Depends on libzeitgeist-dev
+  * debian/patches/02_additional_marge_for_unity.patch:
+    - dropped, it's not required with the current launcher hidding 
+      behaviour (it was to deal with intellihide) and create margin issues
+      (lp: #936958)
+  * debian/patches/zg_activity_logging.patch:
+    - "Logging file creation and move events with Zeitgeist will make sure 
+       they can be found from Unity", thanks Siegfried Gevatter (lp: #927544)
+
+  [ Michael Terry ]
+  * debian/patches/22_fix_crash_from_extra_slot_ref.patch:
+    - Don't crash when emptying the trash while unmounting an SD card
+      LP: #929031
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 01 Mar 2012 21:24:46 +0100
+
+nautilus (1:3.3.90-0ubuntu3) precise; urgency=low
+
+  * debian/patches/21_fix_crash_during_unmount.patch:
+    - Fix callback prototype to not crash when emptying trash during an
+      unmount.  LP: #937824
+
+ -- Michael Terry <mterry@ubuntu.com>  Mon, 27 Feb 2012 15:33:08 -0500
+
+nautilus (1:3.3.90-0ubuntu2) precise; urgency=low
+
+  * debian/patches/05_desktop_menu_export.patch:
+    - updated to the new design requirements, dropping the bookmarks menu and
+      the new windows entry, those are availabe from the unity launcher
+      (lp: #932143)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 22 Feb 2012 19:41:16 +0100
+
+nautilus (1:3.3.90-0ubuntu1) precise; urgency=low
+
+  * New upstream version:
+    - don't segfault in nautilus_icon_view_set_directory_auto_layout() 
+      (lp: #927138)
+  * debian/patches/git_style_tweaks.patch,
+    debian/patches/git_active_toolbar.patch,
+    debian/patches/git_template_not_double_free.patch:
+    - dropped, the fixes are in the new version
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 20 Feb 2012 19:45:32 +0100
+
+nautilus (1:3.3.5-0ubuntu3) precise; urgency=low
+
+  * debian/source_nautilus.py:
+    - include gsettings config changes to bug reports
+  * debian/patches/03_deprecated.patch:
+    - dropped, no need to tweak the build flags the code has been updated
+  * debian/patches/16_run_in_gnome_unity.patch:
+    - dropped, the patch has been applied upstream (lp: #932961)
+  * debian/patches/git_style_tweaks.patch:
+    - backported styling changes
+  * debian/patches/git_active_toolbar.patch:
+    - don't disable pathbars when not needed (lp: #787600, #874739, #822063)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 16 Feb 2012 15:05:03 +0100
+
+nautilus (1:3.3.5-0ubuntu2) precise; urgency=low
+
+  * debian/patches/git_template_not_double_free.patch:
+    - don't abort when creating a file from a template (lp #928802)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 08 Feb 2012 19:36:37 +0100
+
+nautilus (1:3.3.5-0ubuntu1) precise; urgency=low
+
+  * New upstream version, thanks Jeremy Bicha who started on the update:
+    - Introduce Undo support for common file operations (lp: #109170)
+    - Fix a crash when middle clicking icons on the desktop (lp: #817861)
+      (lp: #927998)
+    - Fix split view actions not updating properly (lp: #912746)
+    - Fix wrong places sidebar selection under some locales (lp: #917875)
+    - Fix a crash when enabling desktop icons handling
+    - Fix invalid write error on tab closing (lp: #918907)
+    - Correclty update menu checkmarks (lp: #912746)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 07 Feb 2012 10:57:47 +0100
+
+nautilus (1:3.3.4-0ubuntu2) precise; urgency=low
+
+  * Disable selinux support. On Ubuntu, we ship AppArmor by default, and
+    selinux support adds a useless and technical entry to the properties
+    panel. (LP: #886983)
+    - debian/control.in: remove libselinux1-dev build-depend.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sun, 05 Feb 2012 01:14:45 -0500
+
+nautilus (1:3.3.4-0ubuntu1) precise; urgency=low
+
+  * New upstream version which fixes:
+    - "Opening Popupmenu in Context of Folder with List-View impossible?"
+      (lp: #126540)
+    - "'Create folder in here' context menu option for nautilus" (lp: #61786)
+    - the file count and the size count change in opposite direction.
+      (lp: #503330)
+    - the mounts in the place menu should have a properties entry.
+      (lp: #846289)
+    - add command line option to select file (lp: #575719)
+    - Media in 'Places' side bar should have same context menu as in 
+      'Computer' (lp: #230098)
+  * debian/nautilus-data.install:
+    - updated, ui and icons have been moved into gresources
+  * debian/patches/05_desktop_menu_export.patch:
+     - updated to correctly include the gresources desktop definition
+
+  [ Jeremy Bicha ]
+  * New upstream release.
+  * debian/control.in:
+    - Bump minimum GTK and glib
+  * Refreshed patches
+  * Dropped upstream patches:
+    - 17_dont_allow_new_tab_on_desktop.patch
+    - 18_fix_crash_in_get_current_uri.patch
+    - 19_lazily_initialize_notification_service.patch
+    - git_sideplace_sorting.patch
+    - git_next_row.patch
+    - git_dont_document_browser_option.patch
+    - git_browser_compat.patch
+    - git_bookmarks_reordering.patch
+    - git_listview_context_menus.patch
+    - git_use_gtk_grid.patch
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 31 Jan 2012 13:45:01 +0100
+
+nautilus (1:3.2.1-2ubuntu12) precise; urgency=low
+
+  * debian/patches/git_use_gtk_grid.patch:
+    - use gtkgrid rather than gtktable in the properties dialog,
+      should fix cut labels in the properties dialog (lp: #890055)
+      (lp: #920262)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 24 Jan 2012 13:39:46 +0100
+
+nautilus (1:3.2.1-2ubuntu11) precise; urgency=low
+
+  * debian/patches/12_unity_launcher_support.patch:
+    - handle now our own handler for the bookmarks itself to separate from
+      gtk-window references. This prevents some crashes (especially when there
+      is no nautilus window) (LP: #917821)
+
+ -- Didier Roche <didrocks@ubuntu.com>  Wed, 18 Jan 2012 16:35:33 +0100
+
+nautilus (1:3.2.1-2ubuntu10) precise; urgency=low
+
+  * debian/patches/12_unity_launcher_support.patch:
+    - launch bookmarks in quicklist entry in a new window instead of current
+      one.
+
+ -- Didier Roche <didrocks@ubuntu.com>  Wed, 18 Jan 2012 08:30:49 +0100
+
+nautilus (1:3.2.1-2ubuntu9) precise; urgency=low
+
+  * debian/patches/12_unity_launcher_support.patch:
+    - add support for a second quicklist for nautilus: bookmarks (LP: #723862)
+    - refactoring a great part of the patch to allow multiple
+      "quicklist groups" for nautilus, and each part managing just a subset,
+      grouping elements and such.
+  * debian/patches/20_static_unity_quicklist.patch,
+    debian/nautilus-home.desktop,
+    debian/nautilus-home.desktop.in:
+    - adding a static "Open a new window" quicklist to both nautilus.desktop
+      and nautilus-home.desktop
+
+ -- Didier Roche <didrocks@ubuntu.com>  Tue, 17 Jan 2012 09:22:04 +0100
+
+nautilus (1:3.2.1-2ubuntu8) precise; urgency=low
+
+  * rebuild with latest libunity
+
+ -- Didier Roche <didrocks@ubuntu.com>  Fri, 13 Jan 2012 09:42:01 +0100
+
+nautilus (1:3.2.1-2ubuntu7) precise; urgency=low
+
+  * debian/patches/05_desktop_menu_export.patch:
+    - drop the hack to avoid the nautilus menubar displayed on the desktop on
+      non unity session, it's buggy, spam the session log and the issue 
+      has been fixed properly in gtk with a recent update (lp: #912379)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 12 Jan 2012 16:18:18 +0100
+
+nautilus (1:3.2.1-2ubuntu6) precise; urgency=low
+
+  * Add 19_lazily_initialize_notification_service.patch: Avoid spawning the
+    notification daemon at startup through querying server caps.
+    Instead, cache the result in server_has_persistence() and initialize it
+    lazily. (LP: #912150)
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Thu, 05 Jan 2012 10:32:29 +0100
+
+nautilus (1:3.2.1-2ubuntu5) precise; urgency=low
+
+  * debian/patches/git_listview_context_menus.patch: git fix for list view,
+    "Show background menu when clicking on blank space" (lp: #51043)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Wed, 04 Jan 2012 12:31:25 +0100
+
+nautilus (1:3.2.1-2ubuntu4) precise; urgency=low
+
+  * debian/patches/git_bookmarks_reordering.patch: 
+    - backported some git commits to fix segfaults issues happened on bookmarks 
+      reordering (lp: #876621, #865098)
+  * Refreshed the other changes
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 16 Dec 2011 12:44:49 +0100
+
+nautilus (1:3.2.1-2ubuntu3) precise; urgency=low
+
+  * debian/patches/git_next_row.patch:
+    - let navigate to the next row by pressing right at the end of the line 
+      (lp: #855862)
+  * debian/patches/git_dont_document_browser_option.patch:
+    - don't document the deprecated --browser option (lp: #890071)
+  * debian/patches/git_browser_compat.patch:
+    - don't exit with a "incorrect argument" error when --browser is used,
+      keep it as a dummy compatibility option, some user config use it 
+      (lp: #890071)
+  
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 08 Dec 2011 18:37:01 +0100
+
+nautilus (1:3.2.1-2ubuntu2) precise; urgency=low
+
+  * debian/control.in: drop the Conflicts on the old libnautilus naming until
+    the rdepends are rebuilt, Replaces is enough for non-partial upgrades
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 08 Dec 2011 16:19:03 +0100
+
+nautilus (1:3.2.1-2ubuntu1) precise; urgency=low
+
+  * Resynchronize on Debian
+  * Remaining diffs:
+  * debian/changelog, debian/rules: set epoch number (which was added by error)
+  * debian/control.in:
+    - build-Depend on lpi, libappindicator3-dev, libunity-dev
+    - don't build-depends on individual girs, the libraries do that
+    - don't build with tracker, don't suggests it
+    - nautilus-data should not need to recommends nautilus,
+      lower to a suggests so file-roller doesn't bring in nautilus
+    - nautilus Replaces nautilus-data, Debian installed the dbus service there
+  * debian/mount-archive.desktop:
+  * debian/mount-archive.desktop.in:
+    - New nautilus context menu item to allow mounting zip, iso, etc
+  * debian/nautilus.gsettings-override:
+    - Change the default desktop icon configuration
+  * debian/nautilus.install:
+    - don't move the autostart to usr
+    - install mount-archive menu
+    - install nautilus-folder-handler.desktop
+  * debian/nautilus-data.install:
+    - install apport hook
+  * debian/nautilus-folder-handler.desktop:
+    - ship a copy of nautilus.desktop with NoDisplay=true since some user 
+      configurations refer to it 
+  * debian/patches/01_lpi.patch:
+    - Launchpad changes.
+  * debian/patches/02_additional_marge_for_unity.patch:
+    - ensure we don't move desktop icons when locking or unlocking the unity
+      launcher 
+  * debian/patches/03_translations_list_update.patch:
+    - Translate the mount-archive menu entry
+  * debian/patches/04_suppress_umount_in_ltsp.patch:
+    - Don't list unmount and eject actions on LTSP clients
+  * debian/patches/05_desktop_menu_export.patch:
+    - export the desktop menus for appmenu in unity
+  * debian/patches/06_never_exec_nonexec_launchers.patch:
+    - Implement non-exec policy for .desktop handler.
+  * debian/patches/07_use_application_indicator.patch:
+    - Use the application-indicator, needs to be updated
+  * debian/patches/08_clean_session_capplet.patch:
+    - use NoDisplay for the new autostart desktop to keep the capplet clean
+  * debian/patches/09_no-initial-fade.patch:
+    - Patch to disable the initial fade-in of the background without disabling 
+      crossfades when the background is changed.
+  * debian/patches/11_copy_skipping_pager.patch:
+    - after discussion with dx and design, the easier short-time solution is to
+      have the copy dialog skipping the pager to be able to launch nautilus even
+      with a copy operation in progress
+  * debian/patches/12_unity_launcher_support.patch:
+    - added new patch to include support to the unity launcher.
+      When a file operation is in progress the nautilus launcher icon
+      gets a progress bar and the count of the active transfers, plus
+      a quicklist item to bring on top/show the transfers window.
+  * debian/patches/13_translate_unity_launcher.patch:
+    - list the unity launcher desktop to translate
+  * debian/patches/14_bring_del_instead_ctrl_del.patch:
+    - use Del instead of Ctrl + Del for sending files to the bin
+  * debian/patches/15_use-ubuntu-help.patch:
+    - use the ubuntu documentation
+  * debian/patches/16_run_in_gnome_unity.patch:
+    - handle the background only in GNOME and Unity session
+  * debian/patches/17_dont_allow_new_tab_on_desktop.patch:
+    - Don't allow "New tab" shortcut on desktop
+  * debian/patches/18_fix_crash_in_get_current_uri.patch:
+    - Upstream patch to fix crash in nautilus_window_slot_get_current_uri()
+  * debian/patches/git-0001-Workaround-focus-issues-on-typeahead.patch:
+    - upstream patch to workaround focus issues on typeahead
+  * debian/patches/git_sideplace_sorting.patch:
+    - backport git commit to sort the places entries by alphabetic order
+      rather than coding the list in english order
+  * debian/rules:
+    - use --disable-appindicator
+  * debian/source_nautilus.py:
+    - Apport hook to list versions of files in /usr/lib/nautilus and reassign
+      the crashes when there are not due to nautilus code directly
+  * Dropped diffs:
+  * debian/nautilus.maintscript:
+    - the conffile was only shipped during part of the Oneiric cycle
+  * debian/rules:
+    - ship an empty nautilus.css rather than none to avoid warnings,
+      upstream is shopping the css with theme in the current version
+
+  [ Paul Sladen ]
+  * debian/nautilus-home.desktop: Force icon=folder for
+    'Home Folder' entry to reduce confusion (LP: #874265)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 08 Dec 2011 15:47:34 +0100
 
 nautilus (3.2.1-2) unstable; urgency=low
 
