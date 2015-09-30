@@ -1,0 +1,8 @@
+pkg=nautilus-data
+
+if [ upgrade != "$1" ] || dpkg --compare-versions "$2" lt 1:3.18.0-1blankon3; then
+    dpkg-divert --divert /usr/share/appdata/org.gnome.Nautilus.appdata.xml.divert --package "$pkg" --rename --remove /usr/share/appdata/org.gnome.Nautilus.appdata.xml
+fi
+
+#DEBHELPER#
+
