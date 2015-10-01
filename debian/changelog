@@ -1,3 +1,12 @@
+nautilus (1:3.18.0-1blankon4) tambora; urgency=medium
+
+  * Fix nautilus doesn't open in manokwari menu
+    - Added patch fix-nautilus-open-in-manokwari.patch
+  * Make icon small
+    - Added patch 99_view-small-icon-blankon.patch
+
+ -- mhy <dotovr@mhy>  Thu, 01 Oct 2015 12:39:06 +0700
+
 nautilus (1:3.18.0-1blankon3) tambora; urgency=medium
 
   * Add script nautilus-data.pre* to divert 

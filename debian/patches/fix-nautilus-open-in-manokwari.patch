@@ -1,0 +1,36 @@
+diff -Naur nautilus-3.18.0.orig/data/org.gnome.Nautilus.desktop nautilus-3.18.0/data/org.gnome.Nautilus.desktop
+--- nautilus-3.18.0.orig/data/org.gnome.Nautilus.desktop	2015-10-01 12:28:22.837854803 +0700
++++ nautilus-3.18.0/data/org.gnome.Nautilus.desktop	2015-10-01 12:29:59.423093619 +0700
+@@ -217,7 +217,7 @@
+ Keywords[zh_CN]=目录;文件夹;管理;浏览;磁盘;硬盘;文件系统;folder;manager;explore;disk;filesystem;
+ Keywords[zh_HK]=folder;manager;explore;disk;filesystem;資料夾;管理程式;磁碟;檔案系統;
+ Keywords[zh_TW]=folder;manager;explore;disk;filesystem;資料夾;管理員;磁碟;檔案系統;
+-Exec=nautilus --new-window %U
++Exec=nautilus --new-window
+ Icon=system-file-manager
+ Terminal=false
+ Type=Application
+diff -Naur nautilus-3.18.0.orig/data/org.gnome.Nautilus.desktop.in nautilus-3.18.0/data/org.gnome.Nautilus.desktop.in
+--- nautilus-3.18.0.orig/data/org.gnome.Nautilus.desktop.in	2015-10-01 12:28:22.837854803 +0700
++++ nautilus-3.18.0/data/org.gnome.Nautilus.desktop.in	2015-10-01 12:31:12.546787171 +0700
+@@ -2,7 +2,7 @@
+ _Name=Files
+ _Comment=Access and organize files
+ _Keywords=folder;manager;explore;disk;filesystem;
+-Exec=nautilus --new-window %U
++Exec=nautilus --new-window
+ Icon=system-file-manager
+ Terminal=false
+ Type=Application
+diff -Naur nautilus-3.18.0.orig/data/org.gnome.Nautilus.desktop.in.in nautilus-3.18.0/data/org.gnome.Nautilus.desktop.in.in
+--- nautilus-3.18.0.orig/data/org.gnome.Nautilus.desktop.in.in	2015-10-01 12:28:22.837854803 +0700
++++ nautilus-3.18.0/data/org.gnome.Nautilus.desktop.in.in	2015-10-01 12:31:25.093077634 +0700
+@@ -2,7 +2,7 @@
+ _Name=Files
+ _Comment=Access and organize files
+ _Keywords=folder;manager;explore;disk;filesystem;
+-Exec=nautilus --new-window %U
++Exec=nautilus --new-window
+ Icon=system-file-manager
+ Terminal=false
+ Type=Application
