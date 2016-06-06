@@ -1,3 +1,102 @@
+nautilus (3.20.1-3blankon1) tambora; urgency=low
+
+  * New upstream release
+
+ -- Syai Mif <syaimif@di.blankon.in>  Mon, 06 Jun 2016 09:05:13 +0700
+
+nautilus (3.20.1-3) unstable; urgency=medium
+
+  * debian/nautilus.install: Move nautilus-autostart.desktop back to
+    etc/xdg/autostart. We are trying to remove the non-standard
+    /usr/share/gnome/autostart/ path.
+  * debian/control.in: gnome-icon-theme-symbolic from the dependencies, do not
+    force an icon theme and rely on the one installed by the metapackages
+
+ -- Laurent Bigonville <bigon@debian.org>  Sat, 04 Jun 2016 22:03:13 +0200
+
+nautilus (3.20.1-2) unstable; urgency=medium
+
+  * Only enable SELinux on Linux architectures, should fix FTBFS on other ones
+
+ -- Laurent Bigonville <bigon@debian.org>  Wed, 04 May 2016 08:57:48 +0200
+
+nautilus (3.20.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop obsolete Breaks, Conflicts and Replaces from pre-wheezy.
+  * Bump Standards-Version to 3.9.8.
+  * Fix format string handling in show_unhandled_type_error(), patch taken
+    from bgo#765918.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 03 May 2016 22:56:15 +0200
+
+nautilus (3.20.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop nautilus-dbg package now that we have automatic dbgsym packages.
+  * Ensure proper upgrade from nautilus-dbg to new dbgsym packages by using
+    dh_strip --dbgsym-migration. Bump Build-Depends on debhelper accordingly.
+  * Upload to unstable.
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 17 Apr 2016 17:32:23 +0200
+
+nautilus (3.19.93-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Bump (build-)dependencies according to configure.ac changes:
+    - libgtk-3-dev (>= 3.19.12)
+    - intltool (>= 0.50.0)
+  * Stop shipping GConf->gsettings and metadata conversion files
+    - now dropped upstream and we've converted a long time ago already.
+  * Bump Standards-Version to 3.9.7
+
+ -- Andreas Henriksson <andreas@fatal.se>  Thu, 17 Mar 2016 23:58:05 +0100
+
+nautilus (3.18.5-1) unstable; urgency=medium
+
+  [ Dmitry Shachnev ]
+  * Build without tracker support on stage1 (as tracker build-depends on
+    nautilus itself). Thanks to Daniel Schepler (closes: #739259).
+  * Bump debhelper and dpkg-dev build-dependencies to versions that support
+    restrictions formulas.
+
+  [ Michael Biebl ]
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 30 Jan 2016 00:37:53 +0100
+
+nautilus (3.18.4-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 20 Dec 2015 15:08:08 +0100
+
+nautilus (3.18.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump libglib2.0-dev to (>= 2.45.7) as per configure.ac.
+
+ -- Michael Biebl <biebl@debian.org>  Tue, 15 Dec 2015 21:29:12 +0100
+
+nautilus (3.18.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 14 Nov 2015 15:44:03 +0100
+
+nautilus (3.18.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 21 Oct 2015 16:35:10 +0200
+
+nautilus (3.18.0-2) unstable; urgency=medium
+
+  * Enable PackageKit support
+  * Bump debhelper compatibility to 9
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 13 Oct 2015 12:10:27 +0200
+
 nautilus (1:3.18.0-1blankon4) tambora; urgency=medium
 
   * Fix nautilus doesn't open in manokwari menu
