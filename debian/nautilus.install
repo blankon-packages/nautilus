@@ -5,4 +5,4 @@ usr/share/appdata
 usr/share/applications
 usr/share/dbus-1
 usr/share/man
-etc/xdg/autostart /usr/share/gnome
+etc/xdg/autostart
