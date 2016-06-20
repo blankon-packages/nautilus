@@ -70,6 +70,9 @@ Architecture: any
 Section: libs
 Depends: ${misc:Depends},
          ${shlibs:Depends}
+Conflicts: libnautilus-extension1
+Replaces: libnautilus-extension1
+Breaks: nautilus (<< 3.0)
 Description: libraries for nautilus components - runtime version
  Nautilus is the official file manager and graphical shell for the
  GNOME desktop.
