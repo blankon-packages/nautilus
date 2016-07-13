@@ -1,0 +1,21 @@
+diff -Naur nautilus-3.20.1.orig/data/org.gnome.nautilus.gschema.xml nautilus-3.20.1/data/org.gnome.nautilus.gschema.xml
+--- nautilus-3.20.1.orig/data/org.gnome.nautilus.gschema.xml	2016-04-19 19:10:56.000000000 +0700
++++ nautilus-3.20.1/data/org.gnome.nautilus.gschema.xml	2016-07-13 17:38:14.480310249 +0700
+@@ -164,7 +164,7 @@
+       <aliases>
+         <alias value='modification_date' target='mtime'/>
+       </aliases>
+-      <default>'name'</default>
++      <default>'type'</default>
+       <summary>Default sort order</summary>
+       <description>The default sort-order for items in the icon view. Possible values are "name", "size", "type" and "mtime".</description>
+     </key>
+@@ -213,7 +213,7 @@
+       <description>A list of captions below an icon in the icon view and the desktop. The actual number of captions shown depends on the zoom level. Some possible values are: "size", "type", "date_modified", "owner", "group", "permissions", and "mime_type".</description>
+     </key>
+     <key name="default-zoom-level" enum="org.gnome.nautilus.CanvasZoomLevel">
+-      <default>'large'</default>
++      <default>'small'</default>
+       <summary>Default icon zoom level</summary>
+       <description>Default zoom level used by the icon view.</description>
+     </key>
